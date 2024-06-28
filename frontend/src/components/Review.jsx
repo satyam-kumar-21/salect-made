@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Review = ({ name, text, rating }) => {
+const Review = ({ name, text, rating, imageUrl }) => {
   // Function to render stars based on rating
   const renderStars = () => {
     const stars = [];
@@ -25,8 +25,8 @@ const Review = ({ name, text, rating }) => {
           <div className="flex-shrink-0">
             <img
               className="h-12 w-12 rounded-full object-cover"
-              src="https://via.placeholder.com/50"
-              alt="Avatar"
+              src={imageUrl} // Use the imageUrl prop
+              alt={`Avatar of ${name}`}
             />
           </div>
           <div className="ml-3">

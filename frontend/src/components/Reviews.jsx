@@ -7,21 +7,26 @@ const Reviews = () => {
       name: 'John Doe',
       text: 'Great service! They were very professional and thorough. Will definitely use them again!',
       rating: 5,
+      imageUrl: 'https://via.placeholder.com/50?text=JD'
     },
+    
     {
       name: 'Jane Smith',
       text: 'Excellent job cleaning our office space. Highly recommended!',
       rating: 4,
+      imageUrl: 'https://via.placeholder.com/50?text=JS'
     },
     {
       name: 'Michael Johnson',
       text: 'Prompt and efficient service. Impressed with their attention to detail.',
       rating: 5,
+      imageUrl: 'https://via.placeholder.com/50?text=MJ'
     },
     {
       name: 'Sarah Brown',
       text: 'Good service overall, though a bit pricey compared to others.',
       rating: 3,
+      imageUrl: 'https://via.placeholder.com/50?text=SB'
     },
   ];
 
@@ -39,6 +44,7 @@ const Reviews = () => {
                 name={review.name}
                 text={review.text}
                 rating={review.rating}
+                imageUrl={review.imageUrl} // Pass the imageUrl prop
               />
             ))}
           </div>

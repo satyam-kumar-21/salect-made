@@ -38,6 +38,9 @@ const Hero = () => {
               <a href="#services" className="py-2 px-4" onClick={closeMenu}>
                 Services
               </a>
+              <a href="#branches" className="py-2" onClick={closeMenu}>
+                Branches
+              </a>
               <a href="#contact" className="py-2 px-4" onClick={closeMenu}>
                 Contact
               </a>
@@ -78,6 +81,9 @@ const Hero = () => {
               </a>
               <a href="#services" className="py-2" onClick={closeMenu}>
                 Services
+              </a>
+              <a href="#branches" className="py-2" onClick={closeMenu}>
+                Branches
               </a>
               <a href="#contact" className="py-2" onClick={closeMenu}>
                 Contact

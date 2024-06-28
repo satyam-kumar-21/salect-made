@@ -8,6 +8,7 @@ import Reviews from './components/Reviews'
 import Services from './components/Services'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Branches from './components/Branches'
 
 function App() {
   return (
@@ -15,10 +16,11 @@ function App() {
     <Hero />
     <Overview />
     <About />
+    <Services />
     <NewUpdates />
     <Gallery/>
     <Reviews />
-    <Services />
+    <Branches />
     <Contact />
     <Footer/>
     </>
