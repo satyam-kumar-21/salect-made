@@ -13,6 +13,7 @@ import Review from "./components/Admin/Review.jsx";
 import Services from "./components/Admin/Services.jsx";
 import Branches from "./components/Admin/Branches.jsx";
 import Contact from "./components/Admin/Contact.jsx";
+import PrivateRoute from "./components/Admin/PrivateRoute.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -21,16 +22,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<App />} />
         <Route path="/admin/" element={<Admin />} />
         <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/dashboard" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
 
-
-        <Route path="/admin/about" element={<About />} />
-            <Route path="/admin/new-updates" element={<NewUpdates />} />
-            <Route path="/admin/gallery" element={<Gallery />} />
-            <Route path="/admin/review" element={<Review />} />
-            <Route path="/admin/services" element={<Services />} />
-            <Route path="/admin/branches" element={<Branches />} />
-            <Route path="/admin/contact" element={<Contact />} />
+        <Route path="/admin/about" element={<PrivateRoute><About /></PrivateRoute>} />
+        <Route path="/admin/new-updates" element={<PrivateRoute><NewUpdates /></PrivateRoute>} />
+        <Route path="/admin/gallery" element={<PrivateRoute><Gallery /></PrivateRoute>} />
+        <Route path="/admin/review" element={<PrivateRoute><Review /></PrivateRoute>} />
+        <Route path="/admin/services" element={<PrivateRoute><Services /></PrivateRoute>} />
+        <Route path="/admin/branches" element={<PrivateRoute><Branches /></PrivateRoute>} />
+        <Route path="/admin/contact" element={<PrivateRoute><Contact /></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

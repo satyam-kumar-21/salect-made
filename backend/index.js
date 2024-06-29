@@ -53,8 +53,8 @@ app.use("/branch",branchRouter)
 
 // Predefined admin credentials
 const admin = {
-  username: 'admin',
-  password: 'admin123'
+  username: 'selectmaid@admin',
+  password: 'selectmaid@123'
 };
 
 app.post('/admin/login', (req, res) => {
