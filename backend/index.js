@@ -11,6 +11,7 @@ const galleryRouter = require("./routes/galleryRoutes");
 const newUpdateRouter = require("./routes/newUpdateRoutes");
 const serviceRouter = require("./routes/serviceRoutes")
 const ratingRouter = require("./routes/ratingRoutes");
+const branchRouter = require("./routes/branchRoutes")
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -47,6 +48,24 @@ app.use("/gallery", galleryRouter);
 app.use("/new-update",newUpdateRouter);
 app.use("/service", serviceRouter);
 app.use("/rating", ratingRouter);
+app.use("/branch",branchRouter)
+
+
+// Predefined admin credentials
+const admin = {
+  username: 'admin',
+  password: 'admin123'
+};
+
+app.post('/admin/login', (req, res) => {
+  const { username, password } = req.body;
+
+  if (username === admin.username && password === admin.password) {
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
+});
 
 // Start server
 app.listen(PORT, () => {

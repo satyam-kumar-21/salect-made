@@ -1,38 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Services = () => {
-  const services = [
-    {
-      title: 'Residential Cleaning',
-      description: 'Tailored cleaning solutions for homes, apartments, and condos.',
-      imageUrl: 'https://via.placeholder.com/800x600', // Example URL, replace with actual images
-    },
-    {
-      title: 'Commercial Cleaning',
-      description: 'Efficient cleaning services for offices, retail spaces, and businesses.',
-      imageUrl: 'https://via.placeholder.com/800x600', // Example URL, replace with actual images
-    },
-    {
-      title: 'Deep Cleaning',
-      description: 'Thorough cleaning for hard-to-reach places and heavily soiled areas.',
-      imageUrl: 'https://via.placeholder.com/800x600', // Example URL, replace with actual images
-    },
-    {
-      title: 'Carpet Cleaning',
-      description: 'Specialized cleaning to refresh and maintain the cleanliness of carpets.',
-      imageUrl: 'https://via.placeholder.com/800x600', // Example URL, replace with actual images
-    },
-    {
-      title: 'Window Cleaning',
-      description: 'Professional window cleaning services for homes and businesses.',
-      imageUrl: 'https://via.placeholder.com/800x600', // Example URL, replace with actual images
-    },
-    {
-      title: 'Move-in/Move-out Cleaning',
-      description: 'Thorough cleaning services for moving in or out of a home or office.',
-      imageUrl: 'https://via.placeholder.com/800x600', // Example URL, replace with actual images
-    },
-  ];
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/service/get-all-services'); // Replace with your backend route
+        if (!response.data) {
+          throw new Error('Failed to fetch services');
+        }
+        setServices(response.data);
+      } catch (error) {
+        console.error('Error fetching services:', error);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   return (
     <section id='services' className="bg-white dark:bg-gray-800 py-16">
@@ -47,12 +33,12 @@ const Services = () => {
                 <div className="mb-4">
                   <img
                     className="w-full h-64 object-cover rounded-lg shadow-lg"
-                    src={service.imageUrl}
-                    alt={service.title}
+                    src={service.image}
+                    alt="image"
                   />
                 </div>
                 <div className="flex items-center mb-4">
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{service.title}</h3>
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{service.heading}</h3>
                 </div>
                 <p className="text-gray-700 dark:text-white leading-relaxed">{service.description}</p>
               </div>

@@ -1,33 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import BranchCard from './BranchCard'; // Adjust the import path based on your project structure
 
-const branches = [
-  {
-    name: 'Branch 1',
-    address: '123 Main St, City, Country',
-    phone: '123-456-7890',
-    email: 'branch1@example.com',
-    image: 'https://via.placeholder.com/400x300', // Example image URL
-  },
-  {
-    name: 'Branch 2',
-    address: '456 Elm St, City, Country',
-    phone: '987-654-3210',
-    email: 'branch2@example.com',
-    image: 'https://via.placeholder.com/400x300', // Example image URL
-  },
-  {
-    name: 'Branch 3',
-    address: '789 Oak St, City, Country',
-    phone: '456-789-1234',
-    email: 'branch3@example.com',
-    image: 'https://via.placeholder.com/400x300', // Example image URL
-  },
- 
- 
-];
-
 const Branches = () => {
+  const [branches, setBranches] = useState([]);
+
+  useEffect(() => {
+    const fetchBranches = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/branch/get-all-branches'); // Replace with your backend route
+        if (!response.data) {
+          throw new Error('Failed to fetch branches');
+        }
+        setBranches(response.data);
+      } catch (error) {
+        console.error('Error fetching branches:', error);
+      }
+    };
+
+    fetchBranches();
+  }, []);
+
   return (
     <section id='branches' className="bg-gray-100 dark:bg-gray-800 py-16">
       <div className="container mx-auto px-6">

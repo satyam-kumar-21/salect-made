@@ -16,7 +16,7 @@ const Hero = () => {
       <header className="h-24 sm:h-32 flex items-center z-30 w-full">
         <div className="container mx-auto px-6 flex items-center justify-between">
           <div className="uppercase text-gray-800 dark:text-white font-black text-3xl">
-            Select Made
+            Select Maid
           </div>
           <div className="flex items-center">
             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg hidden lg:flex items-center">
@@ -100,18 +100,16 @@ const Hero = () => {
         <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center justify-between relative py-8 lg:py-8">
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start relative z-20 text-center lg:text-left">
             <span className="w-20 h-2 bg-gray-800 dark:bg-white mb-8 lg:mb-12"></span>
-            <h1 className="font-bebas-neue uppercase text-5xl sm:text-6xl lg:text-8xl font-black flex flex-col leading-none dark:text-white text-gray-800">
-              Be on
-              <span className="text-4xl sm:text-5xl lg:text-7xl">Time</span>
+            <h1 className="font-bebas-neue uppercase text-6xl sm:text-6xl lg:text-3xl font-black flex flex-col leading-none dark:text-white text-gray-800">
+            Spotless Reliable
+              <span className="text-4xl sm:text-5xl lg:text-7xl">Trusted</span>
             </h1>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white mt-4 lg:mt-8">
-              Dimension of reality that makes change possible and
-              understandable. An indefinite and homogeneous environment in which
-              natural events and human existence take place.
+            Your premier choice for pristine homes. We specialize in meticulous cleaning services tailored to exceed your expectations with every visit.
             </p>
             <div className="flex mt-8">
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/+917290021461"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="uppercase py-2 px-4 rounded-lg bg-green-500 border-2 border-transparent text-white text-md mr-4 hover:bg-green-400"

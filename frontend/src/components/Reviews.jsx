@@ -1,34 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Review from './Review'; // Adjust the import path based on your project structure
 
 const Reviews = () => {
-  const reviews = [
-    {
-      name: 'John Doe',
-      text: 'Great service! They were very professional and thorough. Will definitely use them again!',
-      rating: 5,
-      imageUrl: 'https://via.placeholder.com/50?text=JD'
-    },
-    
-    {
-      name: 'Jane Smith',
-      text: 'Excellent job cleaning our office space. Highly recommended!',
-      rating: 4,
-      imageUrl: 'https://via.placeholder.com/50?text=JS'
-    },
-    {
-      name: 'Michael Johnson',
-      text: 'Prompt and efficient service. Impressed with their attention to detail.',
-      rating: 5,
-      imageUrl: 'https://via.placeholder.com/50?text=MJ'
-    },
-    {
-      name: 'Sarah Brown',
-      text: 'Good service overall, though a bit pricey compared to others.',
-      rating: 3,
-      imageUrl: 'https://via.placeholder.com/50?text=SB'
-    },
-  ];
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/rating/get-all-ratings'); // Replace with your backend route
+        if (!response.data) {
+          throw new Error('Failed to fetch reviews');
+        }
+        setReviews(response.data);
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+      }
+    };
+
+    fetchReviews();
+  }, []);
 
   return (
     <section id='reviews' className="bg-gray-100 dark:bg-gray-800 py-16">
@@ -42,9 +33,9 @@ const Reviews = () => {
               <Review
                 key={index}
                 name={review.name}
-                text={review.text}
+                text={review.description}
                 rating={review.rating}
-                imageUrl={review.imageUrl} // Pass the imageUrl prop
+                imageUrl={review.image} // Ensure your backend API returns an 'imageUrl' field for each review
               />
             ))}
           </div>

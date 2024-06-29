@@ -1,33 +1,25 @@
-import React from 'react';
-import GalleryCard from './GalleryCard';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import GalleryCard from './GalleryCard'; // Adjust the import path based on your project structure
 
 const Gallery = () => {
-  const galleryItems = [
-    {
-      imageUrl: 'https://via.placeholder.com/800x600',
-      description: 'Description for Image 1',
-    },
-    {
-      imageUrl: 'https://via.placeholder.com/800x600',
-      description: 'Description for Image 2',
-    },
-    {
-      imageUrl: 'https://via.placeholder.com/800x600',
-      description: 'Description for Image 3',
-    },
-    {
-      imageUrl: 'https://via.placeholder.com/800x600',
-      description: 'Description for Image 4',
-    },
-    {
-      imageUrl: 'https://via.placeholder.com/800x600',
-      description: 'Description for Image 5',
-    },
-    {
-      imageUrl: 'https://via.placeholder.com/800x600',
-      description: 'Description for Image 6',
-    },
-  ];
+  const [galleryItems, setGalleryItems] = useState([]);
+
+  useEffect(() => {
+    const fetchGalleryItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/gallery/all-galleries'); // Replace with your backend route
+        if (!response.data) {
+          throw new Error('Failed to fetch gallery items');
+        }
+        setGalleryItems(response.data);
+      } catch (error) {
+        console.error('Error fetching gallery items:', error);
+      }
+    };
+
+    fetchGalleryItems();
+  }, []);
 
   return (
     <section id='gallery' className="bg-gray-100 dark:bg-gray-800 py-16">
@@ -40,7 +32,7 @@ const Gallery = () => {
             {galleryItems.map((item, index) => (
               <GalleryCard
                 key={index}
-                imageUrl={item.imageUrl}
+                imageUrl={item.image}
                 description={item.description}
               />
             ))}

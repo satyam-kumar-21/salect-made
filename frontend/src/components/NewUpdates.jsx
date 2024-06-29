@@ -1,23 +1,25 @@
-// NewUpdates.js
-import React from 'react';
-import UpdateCard from './UpdateCard';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import UpdateCard from './UpdateCard'; // Adjust the import path based on your project structure
 
 const NewUpdates = () => {
-  const updates = [
-    {
-      imageUrl: 'https://via.placeholder.com/400x250',
-      title: 'Update Title 1',
-      description:
-        'Description of the update or news item goes here. It can include details about recent improvements, events, or changes in services.',
-    },
-    {
-      imageUrl: 'https://via.placeholder.com/400x250',
-      title: 'Update Title 2',
-      description:
-        'Description of the update or news item goes here. It can include details about recent improvements, events, or changes in services.',
-    },
-    // Add more update items as needed
-  ];
+  const [updates, setUpdates] = useState([]);
+
+  useEffect(() => {
+    const fetchUpdates = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/new-update/get-all-new-updates'); // Replace with your backend route
+        if (!response.data) {
+          throw new Error('Failed to fetch updates');
+        }
+        setUpdates(response.data);
+      } catch (error) {
+        console.error('Error fetching updates:', error);
+      }
+    };
+
+    fetchUpdates();
+  }, []);
 
   return (
     <section id='new-update' className="bg-gray-100 dark:bg-gray-800 py-16">
@@ -30,8 +32,8 @@ const NewUpdates = () => {
             {updates.map((update, index) => (
               <UpdateCard
                 key={index}
-                imageUrl={update.imageUrl}
-                title={update.title}
+                imageUrl={update.image}
+                title={update.heading}
                 description={update.description}
               />
             ))}

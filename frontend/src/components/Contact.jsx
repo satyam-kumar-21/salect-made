@@ -20,23 +20,21 @@ const Contact = () => {
                 Address
               </h3>
               <p className="text-gray-700 dark:text-white mb-4">
-                123 Main Street, Suite 200<br />
-                Cityville, State, ZIP Code<br />
-                Country
+                Select Maid, 258, First Floor, Hari Nagar Ashram, Mathura Road, New Delhi 110014
               </p>
               <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
                 Contact Information
               </h3>
               <div className="flex items-center space-x-4 mb-4">
                 <PhoneIcon className="h-6 w-6 text-pink-500 dark:text-white" />
-                <span className="text-gray-700 dark:text-white">Phone: (123) 456-7890</span>
+                <span className="text-gray-700 dark:text-white">Phone: (+91) 7290021461</span>
               </div>
               <div className="flex items-center space-x-4 mb-4">
                 <MailIcon className="h-6 w-6 text-pink-500 dark:text-white" />
-                <span className="text-gray-700 dark:text-white">Email: info@selectmade.com</span>
+                <span className="text-gray-700 dark:text-white">Email: selectmaid@gmail.com</span>
               </div>
               <div className="flex items-center space-x-4">
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-pink-500 dark:text-white hover:text-pink-400">
+                <a href="https://wa.me/+917290021461" target="_blank" rel="noopener noreferrer" className="text-pink-500 dark:text-white hover:text-pink-400">
                   <ExternalLinkIcon className="h-6 w-6" />
                   <span className="ml-2">WhatsApp Us</span>
                 </a>

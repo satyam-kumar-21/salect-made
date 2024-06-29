@@ -79,8 +79,26 @@ const deleteAbout = async (req, res) => {
     }
 };
 
+const getAbout = async (req, res) => {
+    try {
+        // Fetch the latest About section entry
+        const about = await About.findOne().sort({ createdAt: -1 }).exec();
+
+        if (!about) {
+            return res.status(404).json({ message: "About section not found" });
+        }
+
+        res.json(about);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
+
 module.exports = {
     createAbout,
     updateAbout,
     deleteAbout,
+    getAbout,
 };
