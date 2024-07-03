@@ -4,10 +4,12 @@ import axios from 'axios';
 const About = () => {
   const [aboutData, setAboutData] = useState(null);
 
+  
+
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/about/get-about'); // Replace with your backend route
+        const response = await axios.get(`http://localhost:3000/about/get-about`); // Replace with your backend route
         if (!response.data) {
           throw new Error('Failed to fetch about data');
         }

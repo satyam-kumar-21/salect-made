@@ -43,11 +43,21 @@ function About() {
       formDataToSend.append('description2', formData.description2);
       formDataToSend.append('image', formData.image);
 
-      const response = await axios.put(`http://localhost:3000/about/update-about/${aboutData?._id || ''}`, formDataToSend, {
+      const url = aboutData
+        ? `http://localhost:3000/about/update-about/${aboutData._id}`
+        : 'http://localhost:3000/about/create-about';
+
+      const method = aboutData ? 'put' : 'post';
+
+      const response = await axios({
+        method,
+        url,
+        data: formDataToSend,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+
       setAboutData(response.data);
       setShowModal(false);
     } catch (error) {
@@ -82,7 +92,7 @@ function About() {
             onClick={() => setShowModal(true)}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Update About
+            {aboutData ? 'Update About' : 'Create About'}
           </button>
         </div>
 
@@ -107,6 +117,7 @@ function About() {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         rows="4"
                         placeholder="Enter description 1"
+                        value={formData.description1}
                         required
                       ></textarea>
                     </div>
@@ -121,6 +132,7 @@ function About() {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         rows="4"
                         placeholder="Enter description 2"
+                        value={formData.description2}
                         required
                       ></textarea>
                     </div>
@@ -144,7 +156,7 @@ function About() {
                       type="submit"
                       className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                     >
-                      Update
+                      {aboutData ? 'Update' : 'Create'}
                     </button>
                     <button
                       onClick={() => setShowModal(false)}
